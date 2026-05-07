@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Nilai Akhir Siswa</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 5px;
+    }
+    button {
+      padding: 10px;
+      background: orange;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Hitung Nilai Siswa</h2>
+
+  <input type="text" id="nama" placeholder="Nama Siswa"><br>
+  <input type="number" id="tugas" placeholder="Nilai Tugas"><br>
+  <input type="number" id="uts" placeholder="Nilai UTS"><br>
+  <input type="number" id="uas" placeholder="Nilai UAS"><br>
+
+  <button onclick="hitung()">Hitung</button>
+
+  <h3 id="hasil"></h3>
+</div>
+
+<script>
+function hitung() {
+  let nama = document.getElementById("nama").value;
+  let tugas = parseFloat(document.getElementById("tugas").value);
+  let uts = parseFloat(document.getElementById("uts").value);
+  let uas = parseFloat(document.getElementById("uas").value);
+
+  let nilaiAkhir = (0.3 * tugas) + (0.3 * uts) + (0.4 * uas);
+  let predikat = "";
+
+  if (nilaiAkhir >= 90) {
+    predikat = "A";
+  } else if (nilaiAkhir >= 80) {
+    predikat = "B";
+  } else if (nilaiAkhir >= 70) {
+    predikat = "C";
+  } else {
+    predikat = "D";
+  }
+
+  document.getElementById("hasil").innerHTML =
+    "Nama: " + nama + "<br>" +
+    "Nilai Akhir: " + nilaiAkhir.toFixed(2) + "<br>" +
+    "Predikat: " + predikat;
+}
+</script>
+
+</body>
+</html>
